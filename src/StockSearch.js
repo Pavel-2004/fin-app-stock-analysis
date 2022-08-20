@@ -3,11 +3,15 @@ import Input from './components/Input';
 import Buttonc from './components/Buttonc';
 import React, { useState } from 'react';
 
-function StockSearch() {
+function SearchHandler() {
+    ;
+}
+
+function StockSearch(props) {
     const [stockInput, setStockInput] = useState('');
 
-    function onSearch(stock) {
-        console.log("searching stock:", stockInput);
+    function OnSearch() {
+        props.SearchHandler;
         setStockInput('');
 
     }
@@ -19,7 +23,7 @@ function StockSearch() {
                     <Input placeholderIn='Search for a stock' valueIn={stockInput} onChangeIn={event => setStockInput(event.target.value)} />
                 </div>
                 <div className='col-2 my-3'>
-                    <Buttonc title='Search' funct={stockInput => onSearch(stockInput)} padding={10} />
+                    <Buttonc title='Search' funct={OnSearch} padding={10} />
                 </div>
 
             </div>
