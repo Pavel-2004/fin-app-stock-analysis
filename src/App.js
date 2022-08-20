@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './Input';
 import Buttonc from './components/Buttonc';
+import "./backend/auth"
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
@@ -10,4 +11,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
