@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app'
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { initializeApp } from 'firebase/app';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -20,6 +20,7 @@ export const createUserHandler = (auth, username, password) => {
   createUserWithEmailAndPassword(auth, username, password)
     .then((userCredential) => {
       const user = userCredential.user
+      console.log("user created:", user, password)
       return {success: true, result: user}
     })
     .catch((err) => {
