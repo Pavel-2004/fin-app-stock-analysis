@@ -7,7 +7,9 @@ import "./backend/auth"
 function App() {
   return (
     <div className="App">
-      <LoginPage />    
+      <div className='col-6'>
+        <LoginPage />
+      </div>    
     </div>
   );
 }

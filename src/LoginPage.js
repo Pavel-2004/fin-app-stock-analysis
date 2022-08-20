@@ -13,11 +13,26 @@ function LoginPage() {
     }
 
     return (
-        <div>
-            <h1> LOGIN PAGE </h1>
-            <Input placeholderIn="Email..." onChangeIn={event => setEmail(event.target.value)} valueIn={email} />
-            <Input placeholderIn="Password..." onChangeIn={event => setPassword(event.target.value)} valueIn={password} />
-            <Buttonc title="Sign Up" funct={OnSubmit} />
+        <div class="row justify-content-center">
+            <div className="col-12">
+                <h1> LOGIN PAGE </h1>
+            </div>
+            <div class="col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <Input placeholderIn="Email..." onChangeIn={event => setEmail(event.target.value)} valueIn={email} />
+                        </div>
+                        <div class="col-12">
+                            <Input placeholderIn="Password..." onChangeIn={event => setPassword(event.target.value)} valueIn={password} />
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            <Buttonc title="Sign Up" funct={OnSubmit} marginTop={20} />
+                        </div>
+                </div>
+             
+            </div>           
         </div>
     )
 }
