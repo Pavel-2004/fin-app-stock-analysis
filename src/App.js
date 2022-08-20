@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Input from './Input';
+import Input from './components/Input';
 import Buttonc from './components/Buttonc';
 import "./backend/auth"
 
