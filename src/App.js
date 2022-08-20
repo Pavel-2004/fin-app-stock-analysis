@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './Input';
+import Buttonc from './components/Buttonc';
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   return (
     <div className="App">
@@ -8,5 +10,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
