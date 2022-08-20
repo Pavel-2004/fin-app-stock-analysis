@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <div className='col-6'>
         <LoginPage />
+        
       </div>    
     </div>
   );
