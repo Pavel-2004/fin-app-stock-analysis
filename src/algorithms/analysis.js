@@ -35,3 +35,10 @@ export const linearRegression = (xPoints, yPoints) => {
 
     return final
 }
+
+export const checkIfOver = (lastPrice, xPoints, yPoints) => {
+    points = linearRegression(xPoints, yPoints)
+
+    lastPriceLinearRegression = points[points.length - 1]["y"]
+    return lastPrice >= lastPriceLinearRegression
+}
