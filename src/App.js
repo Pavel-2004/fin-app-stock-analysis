@@ -1,4 +1,5 @@
 import TextComponent from './components/TextComponent';
+import ResultComponent from './components/ResultComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './components/Input';
 import Buttonc from './components/Buttonc';
@@ -8,7 +9,6 @@ import LoginPage from './LoginPage';
 import { useState } from 'react';
 import { auth, createUserHandle, signInHandle } from './backend/auth';
 import StockSearch from './StockSearch';
-
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
