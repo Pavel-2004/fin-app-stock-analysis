@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './components/Input';
 import Buttonc from './components/Buttonc';
 import NotifBox from './components/NotifBox';
-import "./backend/auth"
+import {getDataOnTicker, searchResult} from "./backend/eodService"
 import LoginPage from './LoginPage';
 import { useState } from 'react';
 import { auth, createUserHandle, signInHandle } from './backend/auth';
