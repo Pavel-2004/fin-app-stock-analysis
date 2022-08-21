@@ -8,7 +8,7 @@ import LoginPage from './LoginPage';
 import { useState } from 'react';
 import { auth, createUserHandle, signInHandle } from './backend/auth';
 import StockSearch from './StockSearch';
-
+import Loading from './components/Loading';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
