@@ -1,13 +1,14 @@
 import Input from './Input';
 import TextComponent from './TextComponent';
 import Buttonc from './Buttonc';
-import ResultComponent from './ResultComponent';
+import ResultComponentOwned from './ResultComponentOwned';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function OwnedStocks(props) {
-    const listItems = props.allStocks.map((stock) => <ResultComponent name={stock.name} code={stock.code} price={stock.total} textColor={stock.color=='red'? 'danger':'success'}/>);
+    console.log("stock", props.allStocks)
+    const listItems = props.allStocks.map((stock) => <ResultComponentOwned name={stock.stockName} code={stock.stockCode} qty={stock.qty} view={props.view} purchasedPrice={stock.priceAtPurchase}/>);
 
     return (
         <div>
@@ -30,4 +31,4 @@ function OwnedStocksPush() {
     )
 }
 
-export default OwnedStocksPush;
+export default OwnedStocks;

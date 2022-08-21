@@ -11,6 +11,8 @@ import { auth, createUserHandle, signInHandle } from './backend/auth';
 import StockView from './components/StockView';
 import StockSearch from './StockSearch';
 import { getStocks } from './backend/stock';
+import OwnedStocks from './components/OwnedStocks';
+import OwnedStockView from './components/OwnedStockView';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -18,6 +20,7 @@ function App() {
   const [stockData, setStockData] = useState([])
   const [error, setError] = useState(false)
   const [showStockResult, setShowStockResult] = useState(false)
+  const [showOwnedStock, setShowOwnedStock] = useState(false)
   const [searchResults, setSearchResults] = useState([])
   const [stockInfo, setStockInfo] = useState({});
   const [ownedStocks, setOwnedStocks] = useState([]);
@@ -81,48 +84,71 @@ function App() {
     })
   }
 
+  const handleOpenStock = (name, code, total, purchasedPrice, qty) => {
+    getDataOnTicker(code)
+    .then(results => {
+      setStockData(results)
+      setStockInfo({name: name, code: code, total: total, qty: qty, purchasedPrice: purchasedPrice})
+      setShowOwnedStock(true);
+    })
+  }
+
   const handleExitView = () => {
     setStockData([])
     setStockInfo({})
     setPageSwitch(pageSwitch + 1)
     setShowStockResult(false);
+    setShowOwnedStock(false);
   }
 
 
   if (showStockResult) {
     return (<StockView name={stockInfo.name} code={stockInfo.code} price={stockInfo.price} prices={stockData} exit={handleExitView} userId={userId} ownedStocks={ownedStocks}/>)
+  } else if (showOwnedStock) {
+    return (<OwnedStockView name={stockInfo.name} code={stockInfo.code} total={stockInfo.total} prices={stockData} exit={handleExitView} userId={userId} ownedStocks={ownedStocks} qty={stockInfo.qty} purchasedPrice={stockInfo.purchasedPrice}/>)
   } else {
     if (loggedIn) {
       return (
         <div className="App">
           <div className="row justify-content-center">
-            <TextComponent cn="text-center" fs="2em" text="Welcome to analysis"/>
-          </div>
-
-          <div className="row justify-content-center">
-            {error && (
-              <TextComponent cn="text-center text-danger" text="There was an error opening this stock, please try another one."></TextComponent>
-            )}
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-8">
-              <StockSearch searchHandler={search}/>
+            <div className="col-6">
+              <div className="row justify-content-center">
+              <TextComponent cn="text-center" fs="2em" text="Welcome to analysis"/>
             </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-8" style={{height: '50vh', overflow: "scroll"}}>
-              <h1>Results</h1>
-              {
-                searchResults.map((result) => {
-                  return (
-                    <div className="row justify-content-center" style={{marginTop: 20, marginBottom: 20}}>
-                      <div className="col-8">
-                        <ResultComponent name={result.Name} code={result.Code} price={result.previousClose} func={handleView}/>
+
+            <div className="row justify-content-center">
+              {error && (
+                <TextComponent cn="text-center text-danger" text="There was an error opening this stock, please try another one."></TextComponent>
+              )}
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-11">
+                <StockSearch searchHandler={search}/>
+              </div>
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-11" style={{height: '50vh', overflow: "scroll"}}>
+                <h1>Results</h1>
+                {
+                  searchResults.map((result) => {
+                    return (
+                      <div className="row justify-content-center" style={{marginTop: 20, marginBottom: 20}}>
+                        <div className="col-8">
+                          <ResultComponent name={result.Name} code={result.Code} price={result.previousClose} func={handleView}/>
+                        </div>
                       </div>
-                    </div>
-                  )
-                })
-              }
+                    )
+                  })
+                }
+              </div>
+            </div>
+            </div>
+            <div className="col-6">
+              <div className="row justify-content-center">
+                <div className="col-12">
+                  <OwnedStocks allStocks={ownedStocks} view={handleOpenStock}/>
+                </div>
+            </div>
             </div>
           </div>
         </div>
