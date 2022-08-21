@@ -18,7 +18,7 @@ function Graph(props) {
                 <TextComponent text={props.name} />
             </div>
             <div className='d-flex justify-content-center'>
-                <XYPlot width={1200} height={300}>
+                <XYPlot width={1000} height={600}>
                     <VerticalGridLines />
                     <HorizontalGridLines />
                     <XAxis />
@@ -59,4 +59,4 @@ function GraphPush() {
         color="green" />
     )
 }
-export default GraphPush;
+export default Graph;
