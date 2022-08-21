@@ -11,9 +11,7 @@ function App() {
     console.log("this work?");}
   return (
     <div className="App">
-     <div className='col-6'>
-      <LoginPage/>
-     </div>
+      <ResultComponent name = 'Tesla' code = 'TSLA' price = '100' color = "white"  text = "black" func ={test} />
     </div>
   );
 }
