@@ -2,9 +2,12 @@ import TextComponent from './components/TextComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './components/Input';
 import Buttonc from './components/Buttonc';
+import NotifBox from './components/NotifBox';
+import "./backend/auth"
 import LoginPage from './LoginPage';
 import { useState } from 'react';
 import { auth, createUserHandle, signInHandle } from './backend/auth';
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -43,9 +46,6 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="row justify-content-end">
-        x
-      </div>
       <div className="row justify-content-center" style={{height: "100vh"}}>
         <div className="col-lg-5 col-11 my-auto">
           <LoginPage signInHandler={signInHandler} signUpHandler={signUpHandler}/>
