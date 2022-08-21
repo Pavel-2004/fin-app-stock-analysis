@@ -3,17 +3,12 @@ import Input from './components/Input';
 import Buttonc from './components/Buttonc';
 import React, { useState } from 'react';
 
-function SearchHandler() {
-    ;
-}
-
 function StockSearch(props) {
     const [stockInput, setStockInput] = useState('');
 
     function OnSearch() {
-        props.SearchHandler;
+        props.searchHandler(stockInput)
         setStockInput('');
-
     }
 
     return (
