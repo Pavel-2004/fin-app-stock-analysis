@@ -44,8 +44,6 @@ function App() {
     })
   }
 
-  console.log(searchResults)
-
 
   if (loggedIn) {
     return (
@@ -63,15 +61,9 @@ function App() {
             {
               searchResults.map((result) => {
                 return (
-                  <div className="row justify-content-center">
-                    <div className="col-4 text-center">
-                      {result.Name}
-                    </div>
-                    <div className="col-4 text-center">
-                      {result.Code}
-                    </div>
-                    <div className="col-4 text-center">
-                      {result.previousClose}
+                  <div className="row justify-content-center" style={{marginTop: 20, marginBottom: 20}}>
+                    <div className="col-8">
+                      <ResultComponent name={result.Name} code={result.Code} price={result.previousClose} func={handleView}/>
                     </div>
                   </div>
                 )
