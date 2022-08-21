@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, query, collection, getDocs, addDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, setDoc, updateDoc, query, collection, getDocs, addDoc, where } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyCBqYPVzPN8dPYyuxZj2xODt2sAsCo2T6M",
@@ -14,8 +14,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 export const db = getFirestore(app)
 
-export const getStocks = () => {
-    const q = query(collection(db, "stockOwned"))
+export const getStocks = (userId) => {
+    const q = query(collection(db, "stockOwned"), where("ownerId", "==", userId))
     return getDocs(q);
 }
 //this is how this function should be called 
@@ -33,14 +33,9 @@ getStocks()
 })
 */
 
-export const createStock = (ownerId, code, name, qty) => {
-    const docData = {
-        ownerId: ownerId,
-        qty: qty,
-        stockCode: code,
-        stockName: name
-    }
-    return addDoc(collection(db, "stockOwned"), docData)
+export const createStock = (data) => {
+    console.log(data)
+    return addDoc(collection(db, "stockOwned"), data)
 }
 
 

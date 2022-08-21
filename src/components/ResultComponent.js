@@ -3,7 +3,7 @@ function ResultComponent(props) {
 
 
     const handleView = () => {
-      props.func(props.code)
+      props.func(props.name, props.code, props.price)
     }
 
     return (
